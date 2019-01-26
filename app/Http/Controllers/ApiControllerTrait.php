@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 trait ApiControllerTrait
 {
-		public function index()
 		/**
 		 * Filtra os dados com base na query string
 		 *
@@ -51,7 +50,13 @@ trait ApiControllerTrait
 				return response()->json($results);
 		}
 
-
+	public function show($id)
+	 {
+			 $result = $this->model
+					 ->with($this->relationships())
+					 ->findOrFail($id);
+			 return response()->json($result);
+	 }
 
 		protected function relationships()
 		{
@@ -60,6 +65,4 @@ trait ApiControllerTrait
 				}
 				return [];
 		}
-} 
-
-?>
+}
