@@ -19,4 +19,5 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix'=>'api/v1', 'namespace'=>'Api\V1'], function() use ($app){
 	$app->get('restaurants', 'RestaurantsController@index');
+	$app->get('restaurants/{id}', 'RestaurantsController@show');
 });
