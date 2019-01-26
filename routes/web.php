@@ -22,4 +22,5 @@ $app->group(['prefix'=>'api/v1', 'namespace'=>'Api\V1'], function() use ($app){
 	$app->get('restaurants/{id}', 'RestaurantsController@show');
 	$app->post('restaurants', 'RestaurantsController@store');
 	$app->put('restaurants/{id}', 'RestaurantsController@update');
+	$app->delete('restaurants/{id}', 'RestaurantsController@destroy');
 });

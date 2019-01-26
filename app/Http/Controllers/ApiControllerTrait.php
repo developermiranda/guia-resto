@@ -66,12 +66,19 @@ trait ApiControllerTrait
 	}
 
 	public function update(Request $request, $id)
-		{
-				$this->validate($request, $this->rules ?? [], $this->messages ?? []);
-				$result = $this->model->findOrFail($id);
-				$result->update($request->all());
-				return response()->json($result);
-		}
+	{
+		$this->validate($request, $this->rules ?? [], $this->messages ?? []);
+		$result = $this->model->findOrFail($id);
+		$result->update($request->all());
+		return response()->json($result);
+	}
+
+	public function destroy($id)
+	{
+		$result = $this->model->findOrFail($id);
+		$result->delete();
+		return response()->json($result);
+	}
 
 	protected function relationships()
 	{
