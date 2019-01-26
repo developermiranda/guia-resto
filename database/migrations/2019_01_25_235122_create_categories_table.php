@@ -6,23 +6,27 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCategoriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        //
-    }
+		/**
+		 * Run the migrations.
+		 *
+		 * @return void
+		 */
+		public function up()
+		{
+			Schema::create('categories', function (Blueprint $table) {
+					$table->increments('id');
+					$table->string('name');
+					$table->integer('total_restaurants')->default(0);
+			});
+		}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
-    }
+		/**
+		 * Reverse the migrations.
+		 *
+		 * @return void
+		 */
+		public function down()
+		{
+			Schema::drop('categories');
+		}
 }
