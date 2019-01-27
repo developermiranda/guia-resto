@@ -60,7 +60,7 @@ trait ApiControllerTrait
 
 	public function store(Request $request)
 	{
-		// $this->validate($request, $this->rules ?? [], $this->messages ?? []);
+		$this->validate($request, $this->rules ?? [], $this->messages ?? []);
 		$result = $this->model->create($request->all());
 		return response()->json($result);
 	}
