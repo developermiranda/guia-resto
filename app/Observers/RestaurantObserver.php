@@ -9,7 +9,7 @@ use App\Restaurant;
  */
 class RestaurantObserver
 {
-		use UpdloadObserverTrait;
+		use UploadObserverTrait;
 
 		protected $field = 'photo';
 		protected $path = 'restaurante/';
@@ -22,12 +22,12 @@ class RestaurantObserver
 
 		public function deleting(Restaurant $model)
 		{
-
+				$this->removeFile($model);
 		}
 
 		public function updating(Restaurant $model)
 		{
-
+				$this->updateFile($model);
 		}
 
 }
