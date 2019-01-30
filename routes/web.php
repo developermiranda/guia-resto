@@ -10,6 +10,11 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+Dusterio\LumenPassport\LumenPassport::routes($app);
+
+
+
+
 
 $app->get('/', function () use ($app) {
 	return $app->version();
@@ -17,7 +22,7 @@ $app->get('/', function () use ($app) {
 
 
 
-$app->group(['prefix'=>'api/v1', 'namespace'=>'Api\V1'], function() use ($app){
+$app->group(['prefix'=>'api/v1', 'namespace'=>'Api\V1', 'middleware'=>['auth']], function() use ($app){
 	$app->get('restaurants', 'RestaurantsController@index');
 	$app->get('restaurants/{id}', 'RestaurantsController@show');
 	$app->post('restaurants', 'RestaurantsController@store');
